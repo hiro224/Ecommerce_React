@@ -1,16 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/home";
+import Products from "./pages/productList";
+import Navbar from "./components/fun/menuBar";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-     <h1>Welcome</h1>
-    </>
-  )
+    <BrowserRouter>
+     <Navbar/>
+      <Routes>
+        <Route path="/home" element={<Home />} />
+        <Route path="/products" element={<Products/>} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
